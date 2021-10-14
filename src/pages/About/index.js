@@ -10,7 +10,7 @@ const About = () => {
   const intl = useIntl()
   const loadData = async () => {
     const data = await fetch(
-      'https://raw.githubusercontent.com/TarikHuber/react-most-wanted/master/README.md'
+      'https://github.com/vulh91/react-calendly-integration/blob/master/README.md'
     )
     const text = await data.text()
     setSource(text)
