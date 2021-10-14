@@ -1,11 +1,9 @@
 import React from 'react'
 import {
   AccountBox as AccountBoxIcon,
-  ChatBubble,
   ChromeReaderMode,
   Dashboard as DashboardIcon,
   ExitToApp as ExitToAppIcon,
-  FilterList,
   FormatTextdirectionRToL as RTLIcon,
   FormatTextdirectionLToR as LTRIcon,
   GetApp,
@@ -13,12 +11,9 @@ import {
   Language as LanguageIcon,
   Lock as LockIcon,
   MenuOpen as MenuOpenIcon,
-  QuestionAnswer,
   SettingsApplications as SettingsIcon,
   Style as StyleIcon,
-  Tab,
-  ViewList,
-  Web,
+  ContactPage,
 } from '@mui/icons-material'
 
 import allLocales from './locales'
@@ -35,10 +30,8 @@ const getMenuItems = (props) => {
     auth: authData,
   } = props
 
-  const { toggleThis, isDesktop, isAuthMenuOpen, isMiniSwitchVisibility } =
-    menuContext
+  const { toggleThis, isDesktop, isAuthMenuOpen, isMiniSwitchVisibility } = menuContext
   const { themeID, setThemeID, isRTL, toggleThisTheme } = themeContext
-
   const { auth, setAuth } = authData
   const { isAppInstallable, isAppInstalled, deferredPrompt } = a2HSContext
 
@@ -82,9 +75,9 @@ const getMenuItems = (props) => {
         value: '/signin',
         onClick: isAuthorised
           ? () => {
-              setAuth({ isAuthenticated: false })
-            }
-          : () => {},
+            setAuth({ isAuthenticated: false })
+          }
+          : () => { },
         visible: true,
         primaryText: isAuthorised
           ? intl.formatMessage({ id: 'sign_out' })
@@ -101,56 +94,10 @@ const getMenuItems = (props) => {
       leftIcon: <DashboardIcon />,
     },
     {
-      primaryText: intl.formatMessage({ id: 'demos', defaultMessage: 'Demos' }),
-      primaryTogglesNestedList: true,
-      leftIcon: <Web />,
-      nestedItems: [
-        {
-          value: '/dialog_demo',
-          visible: isAuthorised,
-          primaryText: intl.formatMessage({
-            id: 'dialog_demo',
-            defaultMessage: 'Dialog',
-          }),
-          leftIcon: <ChatBubble />,
-        },
-        {
-          value: '/toast_demo',
-          visible: isAuthorised,
-          primaryText: intl.formatMessage({
-            id: 'toast_demo',
-            defaultMessage: 'Toast',
-          }),
-          leftIcon: <QuestionAnswer />,
-        },
-        {
-          value: '/filter_demo',
-          visible: isAuthorised,
-          primaryText: intl.formatMessage({
-            id: 'filter_demo',
-            defaultMessage: 'Filter',
-          }),
-          leftIcon: <FilterList />,
-        },
-        {
-          value: '/list_page_demo',
-          visible: isAuthorised,
-          primaryText: intl.formatMessage({
-            id: 'list_page_demo_menu',
-            defaultMessage: 'List Page',
-          }),
-          leftIcon: <ViewList />,
-        },
-        {
-          value: '/tabs_demo',
-          visible: isAuthorised,
-          primaryText: intl.formatMessage({
-            id: 'tabs_demo',
-            defaultMessage: 'Tabs Page',
-          }),
-          leftIcon: <Tab />,
-        },
-      ],
+      value: '/contact',
+      visible: true,
+      primaryText: intl.formatMessage({ id: 'contact' }),
+      leftIcon: <ContactPage />
     },
     {
       value: '/about',

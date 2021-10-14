@@ -31,6 +31,9 @@ const config = {
     LandingPage: lazy(() => import('../pages/LandingPage/LandingPage')),
     PageNotFound: lazy(() => import('../pages/PageNotFound/PageNotFound')),
   },
+  calendly: {
+    url: process.env.REACT_APP_CALENDLY_URL
+  }
 }
 
 export default config

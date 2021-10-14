@@ -19,10 +19,14 @@ const SignIn = () => {
   const { setAuth } = useAuth()
 
   function handleSubmit(event) {
-    event.preventDefault()
+    event.preventDefault();
+    const displayName = username.indexOf('@') > 0
+      ? username.split('@')[0]
+      : username;
+
     authenticate({
-      displayName: 'User',
       email: username,
+      displayName: displayName,
     })
   }
 
@@ -69,9 +73,10 @@ const SignIn = () => {
               required
               fullWidth
               id="username"
-              label={intl.formatMessage({ id: 'username' })}
+              label={intl.formatMessage({ id: 'email' })}
               name="username"
               autoComplete="username"
+              type="email"
               autoFocus
             />
             <TextField
@@ -90,7 +95,7 @@ const SignIn = () => {
             <Button
               type="submit"
               fullWidth
-              variant="contained"
+              variant="outlined"
               color="primary"
               style={{ margin: theme.spacing(3, 0, 2) }}
             >

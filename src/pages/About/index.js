@@ -8,7 +8,6 @@ import 'github-markdown-css'
 const About = () => {
   const [source, setSource] = useState(null)
   const intl = useIntl()
-
   const loadData = async () => {
     const data = await fetch(
       'https://raw.githubusercontent.com/TarikHuber/react-most-wanted/master/README.md'
